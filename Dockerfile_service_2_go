@@ -1,0 +1,5 @@
+FROM golang:1.23-bookworm
+WORKDIR /service_2_go
+COPY main.go .
+RUN go mod init service_2_go && go build -o service_2_go
+ENTRYPOINT ["./service_2_go"]

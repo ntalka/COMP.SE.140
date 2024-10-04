@@ -27,3 +27,7 @@ go.work.sum
 
 # IntelliJ
 .idea
+
+
+#py
+venv

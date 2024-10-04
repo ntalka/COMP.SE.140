@@ -1,0 +1,16 @@
+services:
+  service_1_python:
+    image: service_1_python
+    build:
+      context: .
+      dockerfile: Dockerfile_service_1_py
+    depends_on:
+      - service_2_go
+    ports:
+      - 8199:8199
+
+  service_2_go:
+    image: service_2_go
+    build:
+      context: .
+      dockerfile: Dockerfile_service_2_go
