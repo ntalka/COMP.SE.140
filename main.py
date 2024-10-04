@@ -18,7 +18,7 @@ def getSystemStats() -> dict[str, str]:
 
 def reqService2SystemStats() -> any:
     try:
-        r = requests.get("http://service_2_go:8220")
+        r = requests.get("http://service_2_go:8200")
     except Exception as e:
         return {"error": str(e)}
     return r.json()
