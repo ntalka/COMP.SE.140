@@ -1,0 +1,11 @@
+CONTAINER ID   IMAGE              COMMAND                  CREATED              STATUS              PORTS                                   NAMES
+429b0030b5e2   service_1_python   "python3 /service_1_…"   About a minute ago   Up About a minute                                           compse140-service_1_python_2-1
+b20b7fc2776c   service_1_python   "python3 /service_1_…"   About a minute ago   Up About a minute                                           compse140-service_1_python_1-1
+9d4bc52613e4   service_1_python   "python3 /service_1_…"   About a minute ago   Up About a minute                                           compse140-service_1_python_3-1
+c019ecffa456   nginx:latest       "/docker-entrypoint.…"   20 minutes ago       Up 51 seconds       0.0.0.0:8198->80/tcp, :::8198->80/tcp   compse140-nginx-1
+49c713c4f4ed   service_2_go       "./service_2_go"         20 minutes ago       Up About a minute                                           compse140-service_2_go-1
+NETWORK ID     NAME                DRIVER    SCOPE
+df82918a4c34   bridge              bridge    local
+709b65a3a545   compse140_default   bridge    local
+f0d5bd7b2884   host                host      local
+d50a38b8d0d2   none                null      local

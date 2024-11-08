@@ -1,16 +1,59 @@
 services:
-  service_1_python:
+  service_1_python_1:
     image: service_1_python
+    environment:
+      - COMPOSE_PROJECT_NAME=compse140
     build:
       context: .
       dockerfile: Dockerfile_service_1_py
-    depends_on:
-      - service_2_go
-    ports:
-      - 8199:8199
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker-compose.yml:/service_1_py/docker-compose.yml
+
+
+  service_1_python_2:
+    image: service_1_python
+    environment:
+      - COMPOSE_PROJECT_NAME=compse140
+    build:
+      context: .
+      dockerfile: Dockerfile_service_1_py
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker-compose.yml:/service_1_py/docker-compose.yml
+
+
+  service_1_python_3:
+    image: service_1_python
+    environment:
+      - COMPOSE_PROJECT_NAME=compse140
+    build:
+      context: .
+      dockerfile: Dockerfile_service_1_py
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./docker-compose.yml:/service_1_py/docker-compose.yml
 
   service_2_go:
     image: service_2_go
+    environment:
+      - COMPOSE_PROJECT_NAME=compse140
     build:
       context: .
       dockerfile: Dockerfile_service_2_go
+
+  nginx:
+    image: nginx:latest
+    environment:
+      - COMPOSE_PROJECT_NAME=compse140
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./index.html:/usr/share/nginx/html/index.html
+      - ./.htpasswd:/etc/nginx/.htpasswd
+    depends_on:
+      - service_1_python_1
+      - service_1_python_2
+      - service_1_python_3
+      - service_2_go
+    ports:
+      - "8198:80"

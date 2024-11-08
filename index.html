@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            async function request() {
+                const res = await fetch('/request');
+                const json = JSON.parse(await res.text());
+                document.getElementById('response').innerText = JSON.stringify(json, null, 4);
+            }
+            async function stop() {
+                const res = await fetch('/stop', { method: 'POST' });
+                document.getElementById('response').innerText = await res.text();
+            }
+        </script>
+    </head>
+    <body>
+        <button onclick="request()">REQUEST</button>
+        <button onclick="stop()">STOP</button>
+        <div id="response" style="white-space: pre-wrap"></div>
+    </body>
+</html>
